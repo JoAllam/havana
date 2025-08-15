@@ -53,7 +53,7 @@ section h2 {
 
 .hero {
     height: 40rem;
-    background-image: url('/media/bg.jpeg');
+    background-image: url('./media/bg.jpeg');
     background-clip: text;
     background-size: 200%;
     color: transparent;
@@ -264,7 +264,6 @@ section h2 {
 
 .blog-img {
     grid-column: 1 / span 1;
-    background-color: white;
     overflow: hidden;
 }
 
@@ -479,8 +478,6 @@ section h2 {
 .review {
     flex: 0 0 calc((100% - 2rem) / 3); /* Desktop: 3 reviews */
     padding: 0.5rem;
-    /* background: var(--darkgray);
-    color: var(--white); */
     background-color: var(--lightgray);
     color: var(--black);
     border-radius: 20px;
