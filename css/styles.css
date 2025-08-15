@@ -53,7 +53,7 @@ section h2 {
 
 .hero {
     height: 40rem;
-    background-image: url('/media/images2.jpeg');
+    background-image: url('/media/bg.jpeg');
     background-clip: text;
     background-size: 200%;
     color: transparent;
@@ -375,4 +375,131 @@ section h2 {
 
 .member h6 {
     color: var(--gray);
+}
+
+#arrivals {
+    max-width: 90%;
+    height: 30rem;
+    margin: 5rem auto 0;
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+        90deg,
+        transparent,
+        white 20%,
+        white 80%,
+        transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+#slider {
+    padding-block: 1rem;
+    font-size: 90%;
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+#slider:hover {
+    animation-play-state: paused;
+}
+
+#slider div {
+    width: 15rem;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#slider div button{
+    background-color: var(--black);
+    color: var(--lightgray);
+    transition: all 300ms linear;
+    cursor: pointer;
+    border: none;
+}
+
+#slider div:hover button{
+    background-color: var(--white);
+    color: var(--black);
+    transition: all 300ms linear;
+}
+
+#slider div img{
+    width: 100%;
+    height: 80%;
+}
+
+.arrivals[data-direction="right"] {
+  --_animation-direction: reverse;
+}
+
+.arrivals[data-direction="left"] {
+  --_animation-direction: forwards;
+}
+
+.arrivals[data-speed="fast"] {
+  --_animation-duration: 20s;
+}
+
+.arrivals[data-speed="slow"] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+#reviews-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 90%;
+    margin: 5rem auto;
+}
+
+#wrapper {
+    overflow: hidden;
+    flex: 1;
+}
+
+#reviews {
+    display: flex;
+    gap: 1rem;
+    transition: all 0.4s ease-in-out;
+}
+
+.review {
+    flex: 0 0 calc((100% - 2rem) / 3); /* Desktop: 3 reviews */
+    padding: 0.5rem;
+    /* background: var(--darkgray);
+    color: var(--white); */
+    background-color: var(--lightgray);
+    color: var(--black);
+    border-radius: 20px;
+    font-size: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.review img {
+    border-radius: 50%;
+}
+
+#prev, #next {
+    cursor: pointer;
+    transition: all 300ms linear;
+}
+
+#prev:hover, #next:hover {
+    transform: scale(1.1);
 }
