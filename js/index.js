@@ -38,7 +38,21 @@ document.addEventListener('DOMContentLoaded', async() => {
 
     index = 0;
 
-    let slidesPerView = 1;
+    let slidesPerTurn = 1;
+
+    let slidesPerView;
+
+    function setSlidesPerView() {
+        if (window.innerWidth <= 500) {
+            slidesPerView = 1;
+        } else if (window.innerWidth <= 800) {
+            slidesPerView = 2;
+        } else {
+            slidesPerView = 3;
+        }
+    }
+
+    setSlidesPerView();
 
     function slideStep() {
     const slideWidth = slides[0].getBoundingClientRect().width;
@@ -51,18 +65,21 @@ document.addEventListener('DOMContentLoaded', async() => {
     }
 
     nextBtn.addEventListener('click', () => {
-    index += slidesPerView;
-    if (index >= slides.length-2) index = 0; // loop, -2 depends on how many slides it moves with click 
+    index += slidesPerTurn;
+    if (index >= slides.length-(slidesPerView-1)) index = 0;
     updateCarousel();
     });
 
     prevBtn.addEventListener('click', () => {
-    index -= slidesPerView;
+    index -= slidesPerTurn;
     if (index < 0) {
-        index = Math.floor((slides.length - 3) / slidesPerView) * slidesPerView; // -3 depends on how many slides it moves with click 
+        index = Math.floor((slides.length - slidesPerView) / slidesPerTurn) * slidesPerTurn;
     }
     updateCarousel();
     });
 
-    window.addEventListener('resize', updateCarousel);
+    window.addEventListener('resize', () => {
+        setSlidesPerView();
+        updateCarousel();
+    });
 });
